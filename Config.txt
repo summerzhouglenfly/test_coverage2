@@ -1,0 +1,192 @@
+#!\usr\bin\env python
+#server share CCData,ccsy,vpn,
+RunComputerNums = 2
+ServerComputerName = r'O:'#read build_done/cl/copy cmodel
+cporder = "0"
+ClientComputerName = r'sat-reg51'
+username = r"*********"
+passwd = r"*********"
+p4user = r"*********"
+p4passwd = r"*********"
+
+CheckCL_Enable = True
+MakeFolder_Enable = True
+EmptyServerFolder_Enable = True#Server true,client false
+CliCopyBinCmodelFromSer_Enable = False#client copy cmode/.cov from server,server false,client true
+SyncCL_Enable = True#server sync from perforce,client false,server true
+CopyCL_Enable = True#server copy binary,client false,server true
+Build_Enable  = True#server build,server true,client false
+CopyBatch_Enable = True#generate batch and edit batch,server true,client false
+RunCovReg_Enable = True#run batch file,both on
+GenCovRet_Enable = True#merge all batch cov to CModel_X_12345.cov,client/server true
+ServerMergeResults_Enable = True#server merge CModel_X.cov,server true,client false
+GenDetails_Enable   = True#server true,client false
+RefResults_Enable = True#server true,client false
+SendResults_Enable = True#server true,client false
+InfoIntoDB_Enable = True#server true,client false
+
+
+DBenchReg_Enable = False
+EudpReg_Enable = False
+VATReg_Enable = False
+VPPReg_Enable = False #True
+Elite_ES1_CTS_Enable = False#True
+Elite_ES31_CTS_Enable = False#True
+Elite_ES32_CTS_Enable = False#True
+Elite_ES2_CTS_Enable = False#True
+Elite_ES3_CTS_Enable = False#True
+Elite_ES31_CTS_extension_Enable = False#True
+Elite_Vulkan_CTS_Enable = False#True
+
+BatchFiles =[    
+    r"ModelRegressionBatch_CIMS.bat",
+    r"ModelRegressionBatch_CHIP_BASIC.bat",
+    r"ModelRegressionBatch_BCI.bat",
+    r"ModelRegressionBatch_DEC.bat",
+    r"ModelRegressionBatch_DX9.bat",
+    r"ModelRegressionBatch_EU.bat",
+    r"ModelRegressionBatch_EU_Elite.bat",
+    r"ModelRegressionBatch_EU_E2UMA.bat",
+    r"ModelRegressionBatch_EU_CS.bat",
+    r"ModelRegressionBatch_FALU_3D.bat",
+    r"ModelRegressionBatch_FFC.bat",
+    r"ModelRegressionBatch_IU.bat",
+    r"ModelRegressionBatch_MXU.bat",
+    r"ModelRegressionBatch_OES2.bat",
+    r"ModelRegressionBatch_OES_BENCH.bat",
+    r"ModelRegressionBatch_SG.bat",
+    r"ModelRegressionBatch_TAS_3D.bat",
+    r"ModelRegressionBatch_TGZ.bat",
+    #r"ModelRegressionBatch_TU.bat",
+    r"ModelRegressionBatch_TU_ASTC.bat",
+    r"ModelRegressionBatch_MutipleGPCSlice.bat",
+    
+]
+BatchFiles_ =[
+    r"ModelRegressionBatch_CIMS.bat",
+    r"ModelRegressionBatch_CHIP_BASIC.bat",
+    r"ModelRegressionBatch_BCI.bat",
+    r"ModelRegressionBatch_DEC.bat",
+    r"ModelRegressionBatch_DX9.bat",
+    r"ModelRegressionBatch_EU.bat",
+    r"ModelRegressionBatch_EU_Elite.bat",
+    r"ModelRegressionBatch_EU_E2UMA.bat",
+    r"ModelRegressionBatch_EU_CS.bat",
+    r"ModelRegressionBatch_FALU_3D.bat",
+    r"ModelRegressionBatch_FFC.bat",
+    r"ModelRegressionBatch_IU.bat",
+    r"ModelRegressionBatch_MXU.bat",
+    r"ModelRegressionBatch_OES2.bat",
+    r"ModelRegressionBatch_OES_BENCH.bat",
+    r"ModelRegressionBatch_SG.bat",
+    r"ModelRegressionBatch_TAS_3D.bat",
+    r"ModelRegressionBatch_TGZ.bat",
+    r"ModelRegressionBatch_TU.bat",
+    r"ModelRegressionBatch_TU_ASTC.bat",
+    r"ModelRegressionBatch_WBU.bat",
+    r"ModelRegressionBatch_WLS.bat",
+    r"ModelRegressionBatch_API_TEXTURE.bat",
+    r"ModelRegressionBatch_OpenGL_SDK.bat",
+    r"ModelRegressionBatch_OCL_benchmark.bat",
+    r"ModelRegressionBatch_Ocl_Benchmark_Overlap.bat",
+    r"ModelRegressionBatch_GPCP.bat",
+    r"ModelRegressionBatch_MutipleGPCSlice.bat",
+    r"ModelRegressionBatch_EU_1G1S.bat",
+    r"ModelRegressionBatch_DTM.bat",
+    r"ModelRegressionBatch_GPCONOFF.bat",
+    r"ModelRegressionBatch_QT_NotCompareDSig.bat",
+    r"ModelRegressionBatch_BCI_HL_SWITCH.bat",
+    r"ModelRegressionBatch_HW_UNSUPPORT.bat",
+    r"ModelRegressionBatch_TBR_PerDraw.bat",
+    r"ModelRegressionBatch_CIL2_VIDEO.bat",
+    r"ModelRegressionBatch_VCP_INSTRUCTION.bat",
+    r"ModelRegressionBatch_VCP_INSTRUCTION_BE.bat",
+    #r"ModelRegressionBatch_2D_BENCH.bat",
+
+]
+
+AllBatchModule = [
+    r"CIMS",
+    r"CHIP_BASIC",
+    r"BCI",
+    r"DEC",
+    r"DX9",
+    r"EU",
+    r"EU_Elite",
+    r"EU_E2UMA",
+    r"EU_CS",
+    r"FALU_3D",
+    r"FFC",
+    r"IU",
+    r"MXU",
+    r"OES2",
+    r"OES_BENCH",
+    r"SG",
+    r"TAS_3D",
+    r"TGZ",
+    #r"TU",
+    r"TU_ASTC",
+    r"MutipleGPCSlice",
+]
+
+AllBatchModule_ = [
+    r"CIMS",
+    r"CHIP_BASIC",
+    r"BCI",
+    r"DEC",
+    r"DX9",
+    r"EU",
+    r"EU_Elite",
+    r"EU_E2UMA",
+    r"EU_CS",
+    r"FALU_3D",
+    r"FFC",
+    r"IU",
+    r"MXU",
+    r"OES2",
+    r"OES_BENCH",
+    r"SG",
+    r"TAS_3D",
+    r"TGZ",
+    r"TU",
+    r"TU_ASTC",
+    r"WBU",
+    r"WLS",
+    r"API_TEXTURE",
+    r"OpenGL_SDK",
+    r"OCL_benchmark",
+    r"Ocl_Benchmark_Overlap",
+    r"GPCP",
+    r"MutipleGPCSlice",
+    r"EU_1G1S",
+    r"DTM",
+    r"GPCONOFF",
+    r"QT_NotCompareDSig",
+    r"BCI_HL_SWITCH",
+    r"HW_UNSUPPORT",
+    r"TBR_PerDraw",
+    r"CIL2_VIDEO",
+    r"VCP_INSTRUCTION",
+    r"VCP_INSTRUCTION_BE",
+    r"2D_BENCH",
+]
+
+EliteCovMergeModule = [
+    r"TASBE",
+    r"TASFE",
+    r"FX_ALU",
+    r"TGZ",
+    r"FFCache",
+    r"CSP",
+    r"MXU",
+    r"SG",
+    r"WBU",                     
+    r"WLS",   
+    r"TU",  
+    r"IU",  
+    r"EU",   
+    r"ZL3",
+    r"L2",                              
+    r"SP",
+    r"GPCPool",
+]
